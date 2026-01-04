@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classic No-Knead Bread Recipe</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Recipe-specific styles */
+        .recipe-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 4rem 20px;
+            text-align: center;
+        }
+
+        .recipe-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .recipe-header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .recipe-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 20px;
+        }
+
+        .recipe-meta {
+            display: flex;
+            gap: 3rem;
+            justify-content: center;
+            padding: 2rem;
+            background-color: var(--bg-light);
+            border-radius: 10px;
+            margin-bottom: 3rem;
+        }
+
+        .meta-item {
+            text-align: center;
+        }
+
+        .meta-item strong {
+            display: block;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .recipe-section {
+            margin-bottom: 3rem;
+        }
+
+        .recipe-section h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .ingredients-list,
+        .instructions-list {
+            background-color: var(--bg-light);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .ingredients-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(139, 69, 19, 0.1);
+        }
+
+        .ingredients-list li:last-child {
+            border-bottom: none;
+        }
+
+        .instructions-list {
+            counter-reset: step-counter;
+            list-style: none;
+        }
+
+        .instructions-list li {
+            counter-increment: step-counter;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            background-color: var(--white);
+            border-radius: 8px;
+            position: relative;
+            padding-left: 4rem;
+        }
+
+        .instructions-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 1rem;
+            top: 1rem;
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .tips-box {
+            background-color: #fff3cd;
+            border-left: 4px solid var(--secondary-color);
+            padding: 1.5rem;
+            border-radius: 5px;
+            margin: 2rem 0;
+        }
+
+        .tips-box h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .tips-box ul {
+            list-style-position: inside;
+            color: var(--text-dark);
+        }
+
+        .tips-box li {
+            margin-bottom: 0.5rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 2rem 0;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">No-Knead Bread</div>
+            <ul class="nav-links">
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../index.html#process">The Process</a></li>
+                <li><a href="../index.html#recipes">Recipes</a></li>
+                <li><a href="../index.html#gallery">Gallery</a></li>
+                <li><a href="../index.html#about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="recipe-header">
+        <h1>Classic No-Knead Bread</h1>
+        <p class="subtitle">The original recipe that revolutionized home bread baking</p>
+    </div>
+
+    <div class="recipe-content">
+        <a href="../index.html#recipes" class="back-link">← Back to Recipes</a>
+
+        <div class="recipe-meta">
+            <div class="meta-item">
+                <strong>Total Time</strong>
+                <span>18-24 hours</span>
+            </div>
+            <div class="meta-item">
+                <strong>Active Time</strong>
+                <span>20 minutes</span>
+            </div>
+            <div class="meta-item">
+                <strong>Difficulty</strong>
+                <span>Easy</span>
+            </div>
+            <div class="meta-item">
+                <strong>Yield</strong>
+                <span>1 loaf</span>
+            </div>
+        </div>
+
+        <section class="recipe-section">
+            <h2>Ingredients</h2>
+            <ul class="ingredients-list">
+                <li>3 cups (400g) all-purpose flour, plus more for dusting</li>
+                <li>1/4 teaspoon instant yeast</li>
+                <li>1 1/2 teaspoons salt</li>
+                <li>1 1/2 cups (350ml) warm water</li>
+            </ul>
+        </section>
+
+        <section class="recipe-section">
+            <h2>Instructions</h2>
+            <ol class="instructions-list">
+                <li>
+                    <strong>Mix the dough:</strong> In a large bowl, combine flour, yeast, and salt. Add water and stir until blended. The dough will be shaggy and sticky. Cover bowl with plastic wrap and let rest at room temperature (about 70°F) for 12 to 18 hours.
+                </li>
+                <li>
+                    <strong>Check the dough:</strong> After the resting period, the dough should be dotted with bubbles and have doubled in size. The surface should look slightly wrinkled.
+                </li>
+                <li>
+                    <strong>Shape the dough:</strong> Generously flour a work surface and place dough on it. Sprinkle with a little more flour and fold it over on itself once or twice. Cover loosely with plastic wrap and let rest for about 15 minutes.
+                </li>
+                <li>
+                    <strong>Second rise:</strong> Using just enough flour to keep dough from sticking to work surface or your fingers, gently shape into a ball. Generously coat a clean cotton towel (not terry cloth) with flour, wheat bran, or cornmeal. Put dough seam side down on towel and dust with more flour. Cover with another towel and let rise for about 2 hours. The dough is ready when it has doubled in size and doesn't readily spring back when poked with a finger.
+                </li>
+                <li>
+                    <strong>Preheat oven:</strong> At least 30 minutes before dough is ready, heat oven to 450°F (230°C). Put a 6- to 8-quart heavy covered pot (cast iron, enamel, Pyrex, or ceramic) in oven as it heats.
+                </li>
+                <li>
+                    <strong>Bake the bread:</strong> Carefully remove pot from oven. Slide your hand under towel and turn dough over into pot, seam side up. It may look like a mess, but that's okay. Shake pan once or twice if dough is unevenly distributed; it will straighten out as it bakes. Cover with lid and bake 30 minutes.
+                </li>
+                <li>
+                    <strong>Finish baking:</strong> Remove lid and bake another 15 to 30 minutes, until loaf is beautifully browned. Use a thermometer to check the internal temperature, which should be around 210°F (99°C).
+                </li>
+                <li>
+                    <strong>Cool and enjoy:</strong> Remove bread from pot and let cool on a wire rack for at least 30 minutes before slicing. The crust should be deeply golden and crispy, while the interior should have an open, airy crumb.
+                </li>
+            </ol>
+        </section>
+
+        <div class="tips-box">
+            <h3>Pro Tips</h3>
+            <ul>
+                <li>The long fermentation time is crucial - don't rush it! This is what develops the flavor and creates the open crumb structure.</li>
+                <li>Use a thermometer to check your water temperature (around 75°F is ideal) and the bread's internal temperature when done.</li>
+                <li>If you don't have a Dutch oven, you can use any heavy pot with a lid that's oven-safe to 450°F.</li>
+                <li>Don't skip preheating the pot! This creates steam that helps develop that beautiful crispy crust.</li>
+                <li>Wait for the bread to cool before cutting - it's still cooking inside!</li>
+                <li>Store leftover bread in a paper bag at room temperature for 2-3 days, or freeze for up to 3 months.</li>
+            </ul>
+        </div>
+
+        <section class="recipe-section">
+            <h2>Notes</h2>
+            <p>This recipe is adapted from Jim Lahey's no-knead method, popularized by Mark Bittman. The minimal intervention allows time and natural fermentation to do the work that kneading would typically accomplish. The result is bread with complex flavors, an open crumb, and a crackly crust that rivals the best artisan bakeries.</p>
+            <p>Feel free to experiment with different flours (try substituting 1/2 cup whole wheat flour for all-purpose) or add-ins like herbs, seeds, or dried fruit. The method is forgiving and adaptable to your preferences.</p>
+        </section>
+
+        <a href="../index.html#recipes" class="back-link">← Back to Recipes</a>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 The Art of No-Knead Bread. A learning project.</p>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
