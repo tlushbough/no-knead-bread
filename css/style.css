@@ -214,12 +214,21 @@ nav {
     animation: fadeInUp 0.8s ease forwards;
 }
 
-.hero p {
+.hero-tagline {
     font-size: clamp(1.125rem, 2vw, 1.5rem);
     color: var(--text-secondary);
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-sm);
     animation: fadeInUp 0.8s ease 0.2s forwards;
     opacity: 0;
+}
+
+.hero-subtitle {
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-xl);
+    animation: fadeInUp 0.8s ease 0.3s forwards;
+    opacity: 0;
+    font-weight: 400;
 }
 
 /* Modern CTA Button */
@@ -241,6 +250,27 @@ nav {
     background: var(--accent-dark);
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(201, 166, 107, 0.4);
+}
+
+/* Brand Story Section */
+.brand-story {
+    padding: var(--spacing-2xl) 0;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.brand-story .container {
+    max-width: 800px;
+}
+
+.brand-story p {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    text-align: center;
+    margin: 0;
+    font-weight: 400;
 }
 
 /* Process Section - Modern Cards */

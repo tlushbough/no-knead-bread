@@ -12,9 +12,7 @@
             <div class="logo">Quiet Rise Kitchen</div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#process">The Process</a></li>
                 <li><a href="#recipes">Recipes</a></li>
-                <li><a href="shop.html">Shop</a></li>
                 <li><a href="#about">About</a></li>
             </ul>
         </nav>
@@ -25,8 +23,16 @@
         <section id="home" class="hero">
             <div class="hero-content">
                 <h1>Quiet Rise Kitchen</h1>
-                <p>Where time does the kneading. Artisan bread baking, simplified.</p>
-                <a href="#process" class="cta-button">Learn the Process</a>
+                <p class="hero-tagline">Where time does the kneading.</p>
+                <p class="hero-subtitle">Artisan no-knead bread—slow-fermented, quietly confident, and remarkably simple.</p>
+                <a href="recipes/classic.html" class="cta-button">Start with the Classic Recipe</a>
+            </div>
+        </section>
+
+        <!-- Brand Story -->
+        <section class="brand-story">
+            <div class="container">
+                <p>No-knead bread isn't about shortcuts. It's about patience. Time builds the flavor. Fermentation builds the structure. You just mix, wait, and bake.</p>
             </div>
         </section>
 
@@ -118,34 +124,6 @@
             </div>
         </section>
 
-        <!-- Gallery Section -->
-        <section id="gallery" class="gallery">
-            <div class="container">
-                <h2>Bread Gallery</h2>
-                <p class="intro">Beautiful bread from home bakers around the world</p>
-                <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <img src="images/bread1.jpg" alt="Fresh baked no-knead bread">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/bread2.jpg" alt="No-knead bread cross section">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/bread3.jpg" alt="Artisan no-knead bread loaf">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/bread4.jpg" alt="Crusty bread exterior">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/bread5.jpg" alt="Bread with open crumb structure">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/bread6.jpg" alt="Beautiful artisan bread">
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- About Section -->
         <section id="about" class="about">
             <div class="container">
@@ -162,18 +140,6 @@
         </div>
     </footer>
 
-    <!-- Lightbox Modal -->
-    <div id="lightbox" class="lightbox">
-        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-        <button class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">&#10094;</button>
-        <div class="lightbox-content">
-            <img id="lightbox-img" src="" alt="">
-            <div class="lightbox-caption" id="lightbox-caption"></div>
-        </div>
-        <button class="lightbox-nav lightbox-next" onclick="changeImage(1)">&#10095;</button>
-    </div>
-
     <script src="js/script.js"></script>
-    <script src="js/lightbox.js"></script>
 </body>
 </html>
