@@ -181,6 +181,33 @@ nav {
     color: var(--primary-color);
 }
 
+/* Featured Recipe */
+.featured-recipe {
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    text-align: center;
+}
+
+.featured-recipe a {
+    display: block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.featured-recipe a:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
+
+.featured-recipe-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    cursor: pointer;
+}
+
 .recipe-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));

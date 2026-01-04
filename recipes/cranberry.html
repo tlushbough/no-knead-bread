@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tim's Cranberry No-Knead Bread Recipe</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Recipe-specific styles */
+        .recipe-header {
+            background: linear-gradient(135deg, #8B4513, #A0522D);
+            color: var(--white);
+            padding: 4rem 20px;
+            text-align: center;
+        }
+
+        .recipe-header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .recipe-header .tagline {
+            font-size: 1.3rem;
+            font-style: italic;
+            opacity: 0.95;
+            margin-bottom: 0.5rem;
+        }
+
+        .recipe-header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.85;
+        }
+
+        .recipe-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 20px;
+        }
+
+        .recipe-meta {
+            display: flex;
+            gap: 3rem;
+            justify-content: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #FFF5EE, #FFE4E1);
+            border-radius: 10px;
+            margin-bottom: 3rem;
+            border: 2px solid #DC143C;
+        }
+
+        .meta-item {
+            text-align: center;
+        }
+
+        .meta-item strong {
+            display: block;
+            color: #8B0000;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .recipe-section {
+            margin-bottom: 3rem;
+        }
+
+        .recipe-section h2 {
+            color: #8B4513;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #DC143C;
+            padding-bottom: 0.5rem;
+        }
+
+        .ingredients-list,
+        .instructions-list {
+            background-color: var(--bg-light);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .ingredients-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(139, 69, 19, 0.1);
+        }
+
+        .ingredients-list li:last-child {
+            border-bottom: none;
+        }
+
+        .ingredients-list strong {
+            color: #8B0000;
+        }
+
+        .liquid-breakdown {
+            margin-left: 2rem;
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        .instructions-list {
+            counter-reset: step-counter;
+            list-style: none;
+        }
+
+        .instructions-list li {
+            counter-increment: step-counter;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            background-color: var(--white);
+            border-radius: 8px;
+            position: relative;
+            padding-left: 4rem;
+        }
+
+        .instructions-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 1rem;
+            top: 1rem;
+            width: 40px;
+            height: 40px;
+            background-color: #DC143C;
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .instructions-list strong {
+            color: #8B4513;
+        }
+
+        .tips-box {
+            background: linear-gradient(135deg, #FFF8DC, #FFEFD5);
+            border-left: 4px solid #DC143C;
+            padding: 1.5rem;
+            border-radius: 5px;
+            margin: 2rem 0;
+        }
+
+        .tips-box h3 {
+            color: #8B0000;
+            margin-bottom: 1rem;
+        }
+
+        .tips-box ul {
+            list-style-position: inside;
+            color: var(--text-dark);
+        }
+
+        .tips-box li {
+            margin-bottom: 0.5rem;
+        }
+
+        .emoji-icon {
+            margin-right: 0.5rem;
+        }
+
+        .results-box {
+            background: linear-gradient(135deg, #F0FFF0, #E0FFE0);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 2px solid #228B22;
+            margin: 2rem 0;
+        }
+
+        .results-box h3 {
+            color: #006400;
+            margin-bottom: 1rem;
+        }
+
+        .results-box ul {
+            list-style: none;
+        }
+
+        .results-box li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .results-box li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #228B22;
+            font-weight: bold;
+        }
+
+        .baker-notes {
+            background-color: #FFF5EE;
+            padding: 2rem;
+            border-radius: 10px;
+            border: 2px dashed #8B4513;
+            font-style: italic;
+            color: #5D4037;
+        }
+
+        .baker-notes h3 {
+            color: #8B4513;
+            font-style: normal;
+            margin-bottom: 1rem;
+        }
+
+        .baker-notes ul {
+            list-style: none;
+        }
+
+        .baker-notes li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .baker-notes li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #DC143C;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 2rem 0;
+            color: #DC143C;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            color: #8B0000;
+        }
+
+        @media (max-width: 768px) {
+            .recipe-meta {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">No-Knead Bread</div>
+            <ul class="nav-links">
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../index.html#process">The Process</a></li>
+                <li><a href="../index.html#recipes">Recipes</a></li>
+                <li><a href="../shop.html">Shop</a></li>
+                <li><a href="../index.html#about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="recipe-header">
+        <h1>Tim's Cranberry No-Knead Bread</h1>
+        <p class="tagline">Reliable. Rustic. Gift-worthy.</p>
+        <p class="subtitle">Delicious homemade bread with no effort!</p>
+    </div>
+
+    <div class="recipe-content">
+        <a href="../index.html#recipes" class="back-link">← Back to Recipes</a>
+
+        <div class="recipe-meta">
+            <div class="meta-item">
+                <strong>Total Time</strong>
+                <span>12-18 hours</span>
+            </div>
+            <div class="meta-item">
+                <strong>Active Time</strong>
+                <span>5 minutes</span>
+            </div>
+            <div class="meta-item">
+                <strong>Difficulty</strong>
+                <span>Easy</span>
+            </div>
+            <div class="meta-item">
+                <strong>Yield</strong>
+                <span>1 generous loaf<br>(or 2 smaller)</span>
+            </div>
+        </div>
+
+        <section class="recipe-section">
+            <h2>Ingredients</h2>
+            <ul class="ingredients-list">
+                <li>3¾ cups all-purpose flour</li>
+                <li>½ teaspoon active dry yeast</li>
+                <li>1½ teaspoons kosher salt</li>
+                <li>¾ cup dried cranberries</li>
+                <li><strong>1¼ cups liquid total</strong>, made up of:
+                    <ul class="liquid-breakdown">
+                        <li>~1 cup beer (lager, ale, or whatever you drink)</li>
+                        <li>~¼ cup warm water</li>
+                        <li>1 tablespoon honey</li>
+                        <li>1 teaspoon white vinegar</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="tips-box">
+                <h3><span class="emoji-icon">💡</span>Optional (next-level)</h3>
+                <p>Add 1–2 tablespoons extra liquid if you want a slightly more open crumb. Totally optional.</p>
+            </div>
+        </section>
+
+        <section class="recipe-section">
+            <h2>Mixing (5 minutes, no kneading)</h2>
+            <ol class="instructions-list">
+                <li>In a large bowl, mix flour, yeast, and salt.</li>
+                <li>Stir in the cranberries so they're coated with flour.</li>
+                <li>Add beer, water, honey, and vinegar.</li>
+                <li>
+                    Stir with a spoon or spatula until you have a shaggy, sticky dough.
+                    <br><em>Don't overthink it. If it looks ugly, you're doing it right.</em>
+                </li>
+                <li>Cover loosely (lid or plastic wrap).</li>
+            </ol>
+        </section>
+
+        <section class="recipe-section">
+            <h2>First Rise (the magic happens here)</h2>
+            <div class="ingredients-list">
+                <p><strong>Let sit at room temperature for 12–18 hours.</strong></p>
+                <p>Dough should:</p>
+                <ul>
+                    <li>Double in size</li>
+                    <li>Be bubbly</li>
+                    <li>Smell slightly sweet and fermented</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="recipe-section">
+            <h2>Shape & Rest</h2>
+            <ol class="instructions-list">
+                <li>Lightly flour the counter.</li>
+                <li>Turn the dough out gently.</li>
+                <li>Fold it over itself once or twice — no kneading.</li>
+                <li>Shape into a loose ball.</li>
+                <li>Place seam-side down on parchment.</li>
+                <li>Cover with a towel and rest 30 minutes.</li>
+            </ol>
+        </section>
+
+        <section class="recipe-section">
+            <h2>Oven & Bake</h2>
+            <ol class="instructions-list">
+                <li>Preheat oven to 450°F.</li>
+                <li>
+                    Place your baking vessel(s) in the oven to heat:
+                    <ul style="margin-top: 0.5rem;">
+                        <li>Dutch oven</li>
+                        <li>Covered baker</li>
+                        <li>Oven-safe pot with lid</li>
+                    </ul>
+                </li>
+                <li>When hot, carefully transfer dough (with parchment) into the vessel.</li>
+                <li>Cover and bake 25 minutes.</li>
+                <li>
+                    Remove lid and bake 10–15 minutes more, until:
+                    <ul style="margin-top: 0.5rem;">
+                        <li>Deep golden brown</li>
+                        <li>Internal temp ~210°F</li>
+                        <li>Or it sounds hollow when tapped</li>
+                    </ul>
+                </li>
+            </ol>
+        </section>
+
+        <section class="recipe-section">
+            <h2>Cooling (important)</h2>
+            <div class="ingredients-list">
+                <ul>
+                    <li>Remove from vessel.</li>
+                    <li>Cool on a rack at least 45–60 minutes before slicing.</li>
+                    <li><strong>Cranberry loaves need extra time to set the crumb.</strong></li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="results-box">
+            <h3>Results You Should Expect</h3>
+            <ul>
+                <li>Crackly, rustic crust</li>
+                <li>Tender, even crumb</li>
+                <li>Cranberries that don't burn or sink</li>
+                <li>Excellent for:
+                    <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                        <li>Butter + honey</li>
+                        <li>Toasting</li>
+                        <li>Gifting</li>
+                        <li>Breakfast bread</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="baker-notes">
+            <h3>Notes from the Baker</h3>
+            <ul>
+                <li>½ tsp yeast is correct. More is not better.</li>
+                <li>If your dough spreads too much next time, don't add flour — shorten the rise slightly.</li>
+                <li>This recipe is forgiving and repeatable.</li>
+            </ul>
+        </div>
+
+        <a href="../index.html#recipes" class="back-link">← Back to Recipes</a>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 The Art of No-Knead Bread. A learning project.</p>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
