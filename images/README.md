@@ -1,29 +1,42 @@
-# Images Folder
+# Images Directory
 
-Place your bread photos here!
+This folder contains all images used on the no-knead bread website.
 
-## Expected Files
+## Current Images
 
-The gallery is set up to display:
-- `bread1.jpg`
-- `bread2.jpg`
-- `bread3.jpg`
-- `bread4.jpg`
-- `bread5.jpg`
-- `bread6.jpg`
+### Cranberry Bread Photos (Tim's Recipes)
+- **cranberry-featured.png** - Homepage featured recipe image (two loaves with "Try the Cranberry Recipe" button)
+- **cranberry-hero.png** - Cranberry recipe page hero banner (single loaf on cutting board with ingredients)
 
-## Tips
+### Stock/Placeholder Images
+- **bread1.jpg** - Generic artisan bread photo (used for recipe page backgrounds and placeholders)
 
-- Use JPG or PNG format
-- Square images work best (but not required anymore!)
-- Recommended size: 800x800 to 1200x1200 pixels
-- Keep file sizes under 500KB for fast loading
+## Gallery Images (Coming Soon)
 
-## What Happens When You Add Images
+The gallery section is ready for these images:
+- `bread2.jpg` through `bread6.jpg` - Add your own bread photos here!
 
-1. **Gallery thumbnails** - Show full image without cropping
-2. **Click to enlarge** - Opens full-screen lightbox viewer
-3. **Navigate** - Use arrow keys or on-screen buttons
-4. **Smooth animations** - Professional fade and zoom effects
+## Image Naming Convention
+
+**Use lowercase with hyphens (kebab-case):**
+- Format: `[recipe-name]-[purpose].[extension]`
+- Examples:
+  - `cranberry-hero.png` (recipe page hero)
+  - `cranberry-featured.png` (homepage feature)
+  - `rosemary-hero.jpg` (for future recipes)
+
+## Adding New Images
+
+1. Save images to this folder with descriptive names
+2. Use JPG for photos (smaller file size)
+3. Use PNG for images with text/graphics
+4. Recommended size: 1200-2000px wide
+5. Keep file sizes under 1MB for fast loading
+
+## Image Usage
+
+- **Hero banners:** 1600x900px minimum (16:9 ratio)
+- **Featured images:** 1200x800px (can include text overlay)
+- **Gallery photos:** 800x800px to 1200x1200px
 
 Drag and drop your images here to get started!
