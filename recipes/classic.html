@@ -6,143 +6,256 @@
     <title>Classic No-Knead Bread Recipe</title>
     <link rel="stylesheet" href="../css/style.css">
     <style>
-        /* Recipe-specific styles */
-        .recipe-header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: var(--white);
-            padding: 4rem 20px;
+        /* Modern Recipe Page Styles */
+        .recipe-hero {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.85), rgba(74, 74, 74, 0.9)),
+                        url('../images/bread1.jpg') center/cover;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
+            color: white;
+            margin-top: 72px;
+            position: relative;
+            padding: var(--spacing-3xl) var(--spacing-lg);
         }
 
-        .recipe-header h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+        .recipe-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(0,0,0,0.3) 100%);
         }
 
-        .recipe-header .subtitle {
-            font-size: 1.2rem;
+        .recipe-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .recipe-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: var(--spacing-md);
+            color: white;
+        }
+
+        .recipe-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
             opacity: 0.9;
         }
 
         .recipe-content {
             max-width: 900px;
             margin: 0 auto;
-            padding: 3rem 20px;
+            padding: var(--spacing-3xl) var(--spacing-lg);
         }
 
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            color: var(--accent-dark);
+            font-weight: 600;
+            margin-bottom: var(--spacing-xl);
+            transition: all var(--transition-fast);
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+            gap: var(--spacing-sm);
+        }
+
+        /* Modern Recipe Meta Cards */
         .recipe-meta {
-            display: flex;
-            gap: 3rem;
-            justify-content: center;
-            padding: 2rem;
-            background-color: var(--bg-light);
-            border-radius: 10px;
-            margin-bottom: 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-3xl);
         }
 
-        .meta-item {
+        .meta-card {
+            background: var(--bg-secondary);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
             text-align: center;
+            transition: all var(--transition-base);
         }
 
-        .meta-item strong {
+        .meta-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent-light);
+        }
+
+        .meta-label {
             display: block;
-            color: var(--primary-color);
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
+            font-weight: 700;
+            color: var(--accent-dark);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--spacing-xs);
         }
 
+        .meta-value {
+            font-size: 1.125rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Modern Section Styling */
         .recipe-section {
-            margin-bottom: 3rem;
+            margin-bottom: var(--spacing-3xl);
         }
 
         .recipe-section h2 {
-            color: var(--primary-color);
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 0.5rem;
+            color: var(--primary);
+            font-size: clamp(1.75rem, 4vw, 2.25rem);
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 2px solid var(--accent);
         }
 
-        .ingredients-list,
-        .instructions-list {
-            background-color: var(--bg-light);
-            padding: 2rem;
-            border-radius: 10px;
+        /* Modern Ingredients List */
+        .ingredients-container {
+            background: var(--bg-secondary);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--border-color);
+        }
+
+        .ingredients-list {
+            list-style: none;
+            padding: 0;
         }
 
         .ingredients-list li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(139, 69, 19, 0.1);
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
         }
 
         .ingredients-list li:last-child {
             border-bottom: none;
         }
 
+        .ingredients-list li::before {
+            content: '✓';
+            color: var(--accent-dark);
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* Modern Instructions */
         .instructions-list {
-            counter-reset: step-counter;
             list-style: none;
+            padding: 0;
+            counter-reset: step-counter;
         }
 
         .instructions-list li {
             counter-increment: step-counter;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            background-color: var(--white);
-            border-radius: 8px;
+            background: var(--bg-secondary);
+            padding: var(--spacing-lg);
+            padding-left: calc(var(--spacing-lg) + 60px);
+            margin-bottom: var(--spacing-md);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
             position: relative;
-            padding-left: 4rem;
+            transition: all var(--transition-base);
+        }
+
+        .instructions-list li:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent-light);
         }
 
         .instructions-list li::before {
             content: counter(step-counter);
             position: absolute;
-            left: 1rem;
-            top: 1rem;
-            width: 40px;
-            height: 40px;
-            background-color: var(--secondary-color);
-            color: var(--white);
+            left: var(--spacing-md);
+            top: var(--spacing-md);
+            width: 44px;
+            height: 44px;
+            background: var(--accent);
+            color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            font-size: 1.2rem;
+            font-weight: 700;
+            font-size: 1.25rem;
+            font-family: var(--font-display);
         }
 
+        .instructions-list strong {
+            color: var(--primary);
+        }
+
+        /* Modern Info Boxes */
         .tips-box {
-            background-color: #fff3cd;
-            border-left: 4px solid var(--secondary-color);
-            padding: 1.5rem;
-            border-radius: 5px;
-            margin: 2rem 0;
+            background: linear-gradient(135deg, #fffbf0, #fff8e1);
+            border-left: 4px solid var(--accent);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            margin: var(--spacing-xl) 0;
         }
 
         .tips-box h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
+            color: var(--accent-dark);
+            margin-bottom: var(--spacing-md);
+            font-size: 1.25rem;
         }
 
         .tips-box ul {
-            list-style-position: inside;
-            color: var(--text-dark);
+            list-style: none;
+            padding: 0;
         }
 
         .tips-box li {
-            margin-bottom: 0.5rem;
+            padding: var(--spacing-xs) 0;
+            padding-left: var(--spacing-lg);
+            position: relative;
         }
 
-        .back-link {
-            display: inline-block;
-            margin: 2rem 0;
-            color: var(--secondary-color);
-            text-decoration: none;
-            font-weight: 600;
+        .tips-box li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent-dark);
+            font-weight: 700;
         }
 
-        .back-link:hover {
-            color: var(--primary-color);
+        .notes-section {
+            background: var(--bg-secondary);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--border-color);
+        }
+
+        .notes-section h2 {
+            border-bottom: none;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .notes-section p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .recipe-meta {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .instructions-list li {
+                padding-left: calc(var(--spacing-md) + 60px);
+            }
         }
     </style>
 </head>
@@ -154,47 +267,51 @@
                 <li><a href="../index.html#home">Home</a></li>
                 <li><a href="../index.html#process">The Process</a></li>
                 <li><a href="../index.html#recipes">Recipes</a></li>
-                <li><a href="../index.html#gallery">Gallery</a></li>
+                <li><a href="../shop.html">Shop</a></li>
                 <li><a href="../index.html#about">About</a></li>
             </ul>
         </nav>
     </header>
 
-    <div class="recipe-header">
-        <h1>Classic No-Knead Bread</h1>
-        <p class="subtitle">The original recipe that revolutionized home bread baking</p>
+    <div class="recipe-hero">
+        <div class="recipe-hero-content">
+            <h1>Classic No-Knead Bread</h1>
+            <p class="recipe-subtitle">The original recipe that revolutionized home bread baking</p>
+        </div>
     </div>
 
     <div class="recipe-content">
         <a href="../index.html#recipes" class="back-link">← Back to Recipes</a>
 
         <div class="recipe-meta">
-            <div class="meta-item">
-                <strong>Total Time</strong>
-                <span>18-24 hours</span>
+            <div class="meta-card">
+                <span class="meta-label">Total Time</span>
+                <span class="meta-value">18-24 hours</span>
             </div>
-            <div class="meta-item">
-                <strong>Active Time</strong>
-                <span>20 minutes</span>
+            <div class="meta-card">
+                <span class="meta-label">Active Time</span>
+                <span class="meta-value">20 minutes</span>
             </div>
-            <div class="meta-item">
-                <strong>Difficulty</strong>
-                <span>Easy</span>
+            <div class="meta-card">
+                <span class="meta-label">Difficulty</span>
+                <span class="meta-value">Easy</span>
             </div>
-            <div class="meta-item">
-                <strong>Yield</strong>
-                <span>1 loaf</span>
+            <div class="meta-card">
+                <span class="meta-label">Yield</span>
+                <span class="meta-value">1 loaf</span>
             </div>
         </div>
 
         <section class="recipe-section">
             <h2>Ingredients</h2>
-            <ul class="ingredients-list">
-                <li>3 cups (400g) all-purpose flour, plus more for dusting</li>
-                <li>1/4 teaspoon instant yeast</li>
-                <li>1 1/2 teaspoons salt</li>
-                <li>1 1/2 cups (350ml) warm water</li>
-            </ul>
+            <div class="ingredients-container">
+                <ul class="ingredients-list">
+                    <li>3 cups (400g) all-purpose flour, plus more for dusting</li>
+                    <li>¼ teaspoon instant yeast</li>
+                    <li>1½ teaspoons salt</li>
+                    <li>1½ cups (350ml) warm water</li>
+                </ul>
+            </div>
         </section>
 
         <section class="recipe-section">
@@ -239,10 +356,10 @@
             </ul>
         </div>
 
-        <section class="recipe-section">
+        <section class="recipe-section notes-section">
             <h2>Notes</h2>
             <p>This recipe is adapted from Jim Lahey's no-knead method, popularized by Mark Bittman. The minimal intervention allows time and natural fermentation to do the work that kneading would typically accomplish. The result is bread with complex flavors, an open crumb, and a crackly crust that rivals the best artisan bakeries.</p>
-            <p>Feel free to experiment with different flours (try substituting 1/2 cup whole wheat flour for all-purpose) or add-ins like herbs, seeds, or dried fruit. The method is forgiving and adaptable to your preferences.</p>
+            <p>Feel free to experiment with different flours (try substituting ½ cup whole wheat flour for all-purpose) or add-ins like herbs, seeds, or dried fruit. The method is forgiving and adaptable to your preferences.</p>
         </section>
 
         <a href="../index.html#recipes" class="back-link">← Back to Recipes</a>
