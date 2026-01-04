@@ -6,240 +6,312 @@
     <title>Tim's Cranberry No-Knead Bread Recipe</title>
     <link rel="stylesheet" href="../css/style.css">
     <style>
-        /* Recipe-specific styles */
-        .recipe-header {
-            background: linear-gradient(135deg, #8B4513, #A0522D);
-            color: var(--white);
-            padding: 4rem 20px;
+        /* Modern Recipe Page Styles */
+        .recipe-hero {
+            background: linear-gradient(135deg, rgba(157, 126, 71, 0.95), rgba(201, 166, 107, 0.9)),
+                        url('../images/bread1.jpg') center/cover;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
+            color: white;
+            margin-top: 72px;
+            position: relative;
+            padding: var(--spacing-3xl) var(--spacing-lg);
         }
 
-        .recipe-header h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
+        .recipe-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(0,0,0,0.3) 100%);
         }
 
-        .recipe-header .tagline {
-            font-size: 1.3rem;
+        .recipe-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .recipe-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: var(--spacing-md);
+            color: white;
+        }
+
+        .recipe-tagline {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
             font-style: italic;
             opacity: 0.95;
-            margin-bottom: 0.5rem;
+            margin-bottom: var(--spacing-sm);
+            font-weight: 400;
         }
 
-        .recipe-header .subtitle {
-            font-size: 1.1rem;
-            opacity: 0.85;
+        .recipe-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            opacity: 0.9;
         }
 
         .recipe-content {
             max-width: 900px;
             margin: 0 auto;
-            padding: 3rem 20px;
+            padding: var(--spacing-3xl) var(--spacing-lg);
         }
 
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            color: var(--accent-dark);
+            font-weight: 600;
+            margin-bottom: var(--spacing-xl);
+            transition: all var(--transition-fast);
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+            gap: var(--spacing-sm);
+        }
+
+        /* Modern Recipe Meta Cards */
         .recipe-meta {
-            display: flex;
-            gap: 3rem;
-            justify-content: center;
-            padding: 2rem;
-            background: linear-gradient(135deg, #FFF5EE, #FFE4E1);
-            border-radius: 10px;
-            margin-bottom: 3rem;
-            border: 2px solid #DC143C;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-3xl);
         }
 
-        .meta-item {
+        .meta-card {
+            background: var(--bg-secondary);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
             text-align: center;
+            transition: all var(--transition-base);
         }
 
-        .meta-item strong {
+        .meta-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent-light);
+        }
+
+        .meta-label {
             display: block;
-            color: #8B0000;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
+            font-weight: 700;
+            color: var(--accent-dark);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--spacing-xs);
         }
 
+        .meta-value {
+            font-size: 1.125rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Modern Section Styling */
         .recipe-section {
-            margin-bottom: 3rem;
+            margin-bottom: var(--spacing-3xl);
         }
 
         .recipe-section h2 {
-            color: #8B4513;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 3px solid #DC143C;
-            padding-bottom: 0.5rem;
+            color: var(--primary);
+            font-size: clamp(1.75rem, 4vw, 2.25rem);
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 2px solid var(--accent);
         }
 
-        .ingredients-list,
-        .instructions-list {
-            background-color: var(--bg-light);
-            padding: 2rem;
-            border-radius: 10px;
+        /* Modern Ingredients List */
+        .ingredients-container {
+            background: var(--bg-secondary);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--border-color);
         }
 
-        .ingredients-list li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(139, 69, 19, 0.1);
+        .ingredients-list {
+            list-style: none;
+            padding: 0;
         }
 
-        .ingredients-list li:last-child {
+        .ingredients-list > li {
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+        }
+
+        .ingredients-list > li:last-child {
             border-bottom: none;
         }
 
-        .ingredients-list strong {
-            color: #8B0000;
+        .ingredients-list > li::before {
+            content: '✓';
+            color: var(--accent-dark);
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 2px;
         }
 
         .liquid-breakdown {
-            margin-left: 2rem;
+            margin-left: var(--spacing-xl);
+            margin-top: var(--spacing-sm);
             font-size: 0.95rem;
-            color: #666;
+            color: var(--text-secondary);
         }
 
+        .liquid-breakdown li {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        /* Modern Instructions */
         .instructions-list {
-            counter-reset: step-counter;
             list-style: none;
+            padding: 0;
+            counter-reset: step-counter;
         }
 
         .instructions-list li {
             counter-increment: step-counter;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            background-color: var(--white);
-            border-radius: 8px;
+            background: var(--bg-secondary);
+            padding: var(--spacing-lg);
+            padding-left: calc(var(--spacing-lg) + 60px);
+            margin-bottom: var(--spacing-md);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
             position: relative;
-            padding-left: 4rem;
+            transition: all var(--transition-base);
+        }
+
+        .instructions-list li:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent-light);
         }
 
         .instructions-list li::before {
             content: counter(step-counter);
             position: absolute;
-            left: 1rem;
-            top: 1rem;
-            width: 40px;
-            height: 40px;
-            background-color: #DC143C;
-            color: var(--white);
+            left: var(--spacing-md);
+            top: var(--spacing-md);
+            width: 44px;
+            height: 44px;
+            background: var(--accent);
+            color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            font-size: 1.2rem;
+            font-weight: 700;
+            font-size: 1.25rem;
+            font-family: var(--font-display);
         }
 
-        .instructions-list strong {
-            color: #8B4513;
+        .instructions-list li em {
+            display: block;
+            margin-top: var(--spacing-xs);
+            color: var(--text-secondary);
+            font-size: 0.95rem;
         }
 
-        .tips-box {
-            background: linear-gradient(135deg, #FFF8DC, #FFEFD5);
-            border-left: 4px solid #DC143C;
-            padding: 1.5rem;
-            border-radius: 5px;
-            margin: 2rem 0;
+        /* Modern Info Boxes */
+        .info-box {
+            background: linear-gradient(135deg, #fffbf0, #fff8e1);
+            border-left: 4px solid var(--accent);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            margin: var(--spacing-xl) 0;
         }
 
-        .tips-box h3 {
-            color: #8B0000;
-            margin-bottom: 1rem;
-        }
-
-        .tips-box ul {
-            list-style-position: inside;
-            color: var(--text-dark);
-        }
-
-        .tips-box li {
-            margin-bottom: 0.5rem;
-        }
-
-        .emoji-icon {
-            margin-right: 0.5rem;
+        .info-box h3 {
+            color: var(--accent-dark);
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.125rem;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
         }
 
         .results-box {
-            background: linear-gradient(135deg, #F0FFF0, #E0FFE0);
-            padding: 2rem;
-            border-radius: 10px;
-            border: 2px solid #228B22;
-            margin: 2rem 0;
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            border-left: 4px solid var(--success);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            margin: var(--spacing-xl) 0;
         }
 
         .results-box h3 {
-            color: #006400;
-            margin-bottom: 1rem;
+            color: #166534;
+            margin-bottom: var(--spacing-md);
+            font-size: 1.25rem;
         }
 
         .results-box ul {
             list-style: none;
+            padding: 0;
         }
 
         .results-box li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
+            padding: var(--spacing-xs) 0;
+            padding-left: var(--spacing-lg);
             position: relative;
         }
 
         .results-box li::before {
-            content: "✓";
+            content: '✓';
             position: absolute;
             left: 0;
-            color: #228B22;
-            font-weight: bold;
+            color: var(--success);
+            font-weight: 700;
         }
 
         .baker-notes {
-            background-color: #FFF5EE;
-            padding: 2rem;
-            border-radius: 10px;
-            border: 2px dashed #8B4513;
-            font-style: italic;
-            color: #5D4037;
+            background: var(--bg-secondary);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-xl);
+            border: 2px dashed var(--accent-light);
         }
 
         .baker-notes h3 {
-            color: #8B4513;
-            font-style: normal;
-            margin-bottom: 1rem;
+            color: var(--primary);
+            margin-bottom: var(--spacing-md);
+            font-size: 1.25rem;
         }
 
         .baker-notes ul {
             list-style: none;
+            padding: 0;
         }
 
         .baker-notes li {
-            margin-bottom: 0.75rem;
-            padding-left: 1.5rem;
+            padding: var(--spacing-sm) 0;
+            padding-left: var(--spacing-lg);
             position: relative;
+            color: var(--text-secondary);
+            font-style: italic;
         }
 
         .baker-notes li::before {
-            content: "•";
+            content: '•';
             position: absolute;
             left: 0;
-            color: #DC143C;
+            color: var(--accent-dark);
             font-size: 1.5rem;
             line-height: 1;
         }
 
-        .back-link {
-            display: inline-block;
-            margin: 2rem 0;
-            color: #DC143C;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .back-link:hover {
-            color: #8B0000;
-        }
-
         @media (max-width: 768px) {
             .recipe-meta {
-                flex-direction: column;
-                gap: 1.5rem;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .instructions-list li {
+                padding-left: calc(var(--spacing-md) + 60px);
             }
         }
     </style>
@@ -258,53 +330,58 @@
         </nav>
     </header>
 
-    <div class="recipe-header">
-        <h1>Tim's Cranberry No-Knead Bread</h1>
-        <p class="tagline">Reliable. Rustic. Gift-worthy.</p>
-        <p class="subtitle">Delicious homemade bread with no effort!</p>
+    <div class="recipe-hero">
+        <div class="recipe-hero-content">
+            <h1>Tim's Cranberry No-Knead Bread</h1>
+            <p class="recipe-tagline">Reliable. Rustic. Gift-worthy.</p>
+            <p class="recipe-subtitle">Delicious homemade bread with no effort!</p>
+        </div>
     </div>
 
     <div class="recipe-content">
         <a href="../index.html#recipes" class="back-link">← Back to Recipes</a>
 
         <div class="recipe-meta">
-            <div class="meta-item">
-                <strong>Total Time</strong>
-                <span>12-18 hours</span>
+            <div class="meta-card">
+                <span class="meta-label">Total Time</span>
+                <span class="meta-value">12-18 hours</span>
             </div>
-            <div class="meta-item">
-                <strong>Active Time</strong>
-                <span>5 minutes</span>
+            <div class="meta-card">
+                <span class="meta-label">Active Time</span>
+                <span class="meta-value">5 minutes</span>
             </div>
-            <div class="meta-item">
-                <strong>Difficulty</strong>
-                <span>Easy</span>
+            <div class="meta-card">
+                <span class="meta-label">Difficulty</span>
+                <span class="meta-value">Easy</span>
             </div>
-            <div class="meta-item">
-                <strong>Yield</strong>
-                <span>1 generous loaf<br>(or 2 smaller)</span>
+            <div class="meta-card">
+                <span class="meta-label">Yield</span>
+                <span class="meta-value">1-2 loaves</span>
             </div>
         </div>
 
         <section class="recipe-section">
             <h2>Ingredients</h2>
-            <ul class="ingredients-list">
-                <li>3¾ cups all-purpose flour</li>
-                <li>½ teaspoon active dry yeast</li>
-                <li>1½ teaspoons kosher salt</li>
-                <li>¾ cup dried cranberries</li>
-                <li><strong>1¼ cups liquid total</strong>, made up of:
-                    <ul class="liquid-breakdown">
-                        <li>~1 cup beer (lager, ale, or whatever you drink)</li>
-                        <li>~¼ cup warm water</li>
-                        <li>1 tablespoon honey</li>
-                        <li>1 teaspoon white vinegar</li>
-                    </ul>
-                </li>
-            </ul>
+            <div class="ingredients-container">
+                <ul class="ingredients-list">
+                    <li>3¾ cups all-purpose flour</li>
+                    <li>½ teaspoon active dry yeast</li>
+                    <li>1½ teaspoons kosher salt</li>
+                    <li>¾ cup dried cranberries</li>
+                    <li>
+                        <strong>1¼ cups liquid total</strong>, made up of:
+                        <ul class="liquid-breakdown">
+                            <li>~1 cup beer (lager, ale, or whatever you drink)</li>
+                            <li>~¼ cup warm water</li>
+                            <li>1 tablespoon honey</li>
+                            <li>1 teaspoon white vinegar</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
 
-            <div class="tips-box">
-                <h3><span class="emoji-icon">💡</span>Optional (next-level)</h3>
+            <div class="info-box">
+                <h3><span>💡</span> Optional (next-level)</h3>
                 <p>Add 1–2 tablespoons extra liquid if you want a slightly more open crumb. Totally optional.</p>
             </div>
         </section>
@@ -317,7 +394,7 @@
                 <li>Add beer, water, honey, and vinegar.</li>
                 <li>
                     Stir with a spoon or spatula until you have a shaggy, sticky dough.
-                    <br><em>Don't overthink it. If it looks ugly, you're doing it right.</em>
+                    <em>Don't overthink it. If it looks ugly, you're doing it right.</em>
                 </li>
                 <li>Cover loosely (lid or plastic wrap).</li>
             </ol>
@@ -325,10 +402,10 @@
 
         <section class="recipe-section">
             <h2>First Rise (the magic happens here)</h2>
-            <div class="ingredients-list">
+            <div class="ingredients-container">
                 <p><strong>Let sit at room temperature for 12–18 hours.</strong></p>
-                <p>Dough should:</p>
-                <ul>
+                <p style="margin-top: var(--spacing-md);">Dough should:</p>
+                <ul class="ingredients-list">
                     <li>Double in size</li>
                     <li>Be bubbly</li>
                     <li>Smell slightly sweet and fermented</li>
@@ -354,29 +431,21 @@
                 <li>Preheat oven to 450°F.</li>
                 <li>
                     Place your baking vessel(s) in the oven to heat:
-                    <ul style="margin-top: 0.5rem;">
-                        <li>Dutch oven</li>
-                        <li>Covered baker</li>
-                        <li>Oven-safe pot with lid</li>
-                    </ul>
+                    <em>Dutch oven, covered baker, or oven-safe pot with lid</em>
                 </li>
                 <li>When hot, carefully transfer dough (with parchment) into the vessel.</li>
                 <li>Cover and bake 25 minutes.</li>
                 <li>
                     Remove lid and bake 10–15 minutes more, until:
-                    <ul style="margin-top: 0.5rem;">
-                        <li>Deep golden brown</li>
-                        <li>Internal temp ~210°F</li>
-                        <li>Or it sounds hollow when tapped</li>
-                    </ul>
+                    <em>Deep golden brown, internal temp ~210°F, or sounds hollow when tapped</em>
                 </li>
             </ol>
         </section>
 
         <section class="recipe-section">
             <h2>Cooling (important)</h2>
-            <div class="ingredients-list">
-                <ul>
+            <div class="ingredients-container">
+                <ul class="ingredients-list">
                     <li>Remove from vessel.</li>
                     <li>Cool on a rack at least 45–60 minutes before slicing.</li>
                     <li><strong>Cranberry loaves need extra time to set the crumb.</strong></li>
@@ -390,14 +459,7 @@
                 <li>Crackly, rustic crust</li>
                 <li>Tender, even crumb</li>
                 <li>Cranberries that don't burn or sink</li>
-                <li>Excellent for:
-                    <ul style="margin-left: 2rem; margin-top: 0.5rem;">
-                        <li>Butter + honey</li>
-                        <li>Toasting</li>
-                        <li>Gifting</li>
-                        <li>Breakfast bread</li>
-                    </ul>
-                </li>
+                <li>Excellent for butter + honey, toasting, gifting, or breakfast bread</li>
             </ul>
         </div>
 
